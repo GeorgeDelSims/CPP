@@ -52,7 +52,7 @@ class Fixed
         static const int    _fractionalBits = 8;
         int                 _fixedPointValue;
         // member functions
-
+        
 };
 
 #endif
