@@ -39,16 +39,10 @@ cat <<EOL > ${SOURCE_FILE}
 ${CLASS_NAME}::${CLASS_NAME}() {}
 
 //Copy constructor
-${CLASS_NAME}(const ${CLASS_NAME}& other)
-{
-
-}
+${CLASS_NAME}::${CLASS_NAME}(const ${CLASS_NAME}& other) {}
 
 //Copy assignment operator
-${CLASS_NAME}&  operator=(${CLASS_NAME}& other)
-{
-    
-}
+${CLASS_NAME}&  ${CLASS_NAME}::operator=(${CLASS_NAME}& other) {}
 
 //Destructor
 ${CLASS_NAME}::~${CLASS_NAME}() {}
