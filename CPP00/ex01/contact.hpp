@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <algorithm> 
+// #include <algorithm> 
 #include <cctype>
 
 // Contact Class 

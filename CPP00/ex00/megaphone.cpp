@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+// #include <algorithm>
 #include <cctype>
 
 unsigned char to_upper(unsigned char c) 
