@@ -1,8 +1,8 @@
 # Name
-NAME = Fixed
+NAME = BSP
 
 # Sources and objects.
-SRCS = Fixed.cpp main.cpp
+SRCS = Fixed.cpp main.cpp Point.cpp Vector.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

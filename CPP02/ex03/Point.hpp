@@ -7,18 +7,18 @@ class Point
 {
     public:
         Point(); // constructor
-        Point(const float xf, const float yf); // constructor
-        Point(const Point& other); //copy constructor
-        Point&  operator=(const Point& other); // copy assignment operator
+        Point(const float xf, const float yf); // float constructor
+        Point(const Point& other); // copy constructor
         ~Point(); // destructor 
 
         // Methods: 
-
+        const Fixed&  get_x(void) const;
+        const Fixed&  get_y(void) const;
 
     private:
         // Member variables & utils functions:
-        Fixed&    _x;
-        Fixed&    _y;
+        const Fixed    _x;
+        const Fixed    _y;
 };
 
 #endif // Point_HPP
