@@ -2,7 +2,7 @@
 NAME = megaphone
 
 # Sources and objects.
-SRCS = megaphone.cpp 
+SRCS = Megaphone.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

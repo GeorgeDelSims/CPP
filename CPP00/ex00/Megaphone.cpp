@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-// #include <algorithm>
 #include <cctype>
 
 unsigned char to_upper(unsigned char c) 
@@ -8,10 +7,10 @@ unsigned char to_upper(unsigned char c)
     return std::toupper(c);
 }
 
-
 int	main (int ac, char *av[])
 {
 	int				i;
+	size_t			j;
 	std::string		concatenated_str;
 
 	if (ac < 2)
@@ -19,9 +18,17 @@ int	main (int ac, char *av[])
 	else
 	{
 		for (i = 1; i < ac; ++i)
+		{	
 			concatenated_str += av[i];
+			if (std::concatenated_str.back() != ' ')
+				concatenated_str += " ! ";
+		}
 	}
-	std::transform(concatenated_str.begin(),concatenated_str.end(), concatenated_str.begin(), to_upper);
+	
+	for(j = 0; j < concatenated_str.length(); ++j)
+	{
+		concatenated_str[j] = std::toupper(static_cast<unsigned char>(concatenated_str[j]));
+	}
 
     std::cout << concatenated_str << std::endl;
 

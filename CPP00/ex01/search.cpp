@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 // Function that shortens the string to the max width given
 static std::string truncate(const std::string &str, const int width)
