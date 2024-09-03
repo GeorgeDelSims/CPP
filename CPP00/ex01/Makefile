@@ -2,12 +2,12 @@
 NAME = My_Awesome_Phonebook
 
 # Sources and objects.
-SRCS = phonebook.cpp contact.cpp main.cpp add.cpp search.cpp
+SRCS = Phonebook.cpp Contact.cpp main.cpp add.cpp search.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
-CXX = g++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 # Compile and create everything.
 all: $(NAME)

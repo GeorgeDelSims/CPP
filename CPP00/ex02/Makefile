@@ -6,7 +6,7 @@ SRCS = phonebook.cpp contact.cpp main.cpp add.cpp search.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Compile and create everything.

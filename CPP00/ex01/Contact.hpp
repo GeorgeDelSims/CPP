@@ -5,8 +5,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-// #include <algorithm> 
 #include <cctype>
+#include <sstream>
 
 // Contact Class 
 class Contact {

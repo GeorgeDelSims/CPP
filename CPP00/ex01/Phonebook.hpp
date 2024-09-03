@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "contact.hpp"
+#include "Contact.hpp"
 
 // Phonebook Class 
 class Phonebook {
@@ -11,6 +11,7 @@ public:
 	~Phonebook(void);
 	void	add();
 	void	search();
+	void	search_index(std::string str);
 	void	print(Contact contact);
 
 private:

@@ -12,7 +12,12 @@ int	main(void)
 		if (str == "ADD")
 			_phonebook.add();
 		else if (str == "SEARCH")
+		{	
 			_phonebook.search();
+			std::cout << "Enter an index : ";
+			std::getline(std::cin, str);
+			_phonebook.search_index(str);
+		}
 		if (std::cin.eof())
 		{
 			std::cout << std::endl;
