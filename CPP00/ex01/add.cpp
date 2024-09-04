@@ -1,15 +1,22 @@
 #include "Phonebook.hpp"
 
+static bool is_space(char c)
+{
+	if (c == '\n' || c == ' ' || c == '\t' || c == '\r' || c == '\v' || c == '\f') 
+		return (true);
+	return (false);
+}
+
 // Function to trim whitespace from both ends of a string
 static std::string trim(const std::string& str) 
 {
 	size_t	start = 0;
 	size_t	end;
 
-	while (start < str.size() && std::isspace(str[start]))
+	while (start < str.size() && is_space(str[start]))
 		++start;
 	end = str.size();
-	while (end > start && std::isspace(str[end -1]))
+	while (end > start && is_space(str[end -1]))
 		--end;
 	return (str.substr(start, end - start));		
 }
@@ -30,7 +37,7 @@ void	Phonebook::add(void)
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Input first name: ";
-		if (std::getline(std::cin, str) && str != "")
+		if (std::getline(std::cin, str) && str == "")
 		{
 			this->_contacts[this->_index % 8].set_firstname(trim(str)); 
 		}
@@ -39,28 +46,28 @@ void	Phonebook::add(void)
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Input " << this->_contacts[this->_index].get_firstname() << "'s last name: ";
-		if (std::getline(std::cin, str) && str != "")
+		if (std::getline(std::cin, str) && str == "")
 			this->_contacts[this->_index % 8].set_lastname(trim(str)); 
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Input " << this->_contacts[this->_index].get_firstname() << "'s nickname: ";
-		if (std::getline(std::cin, str) && str != "")
+		if (std::getline(std::cin, str) && str == "")
 			this->_contacts[this->_index % 8].set_nickname(trim(str)); 
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Input " << this->_contacts[this->_index].get_firstname() << "'s number: ";
-		if (std::getline(std::cin, str) && str != "")
+		if (std::getline(std::cin, str) && str == "")
 			this->_contacts[this->_index % 8].set_number(trim(str)); 
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Input " << this->_contacts[this->_index].get_firstname() << "'s darkest secret: ";
-		if (std::getline(std::cin, str) && str != "")
+		if (std::getline(std::cin, str) && str == "")
 			this->_contacts[this->_index % 8].set_secret(trim(str)); 
 	}
 	str = "";
