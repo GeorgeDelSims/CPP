@@ -6,8 +6,10 @@
 class Weapon 
 {
     public:
-        Weapon(std::string type);
-        ~Weapon();
+        Weapon(std::string type); // Constructor
+        Weapon(const Weapon& other); // Copy Constructor
+        ~Weapon(); // Destructor 
+        Weapon& operator=(const Weapon& other); // Copy Assignment Operator
 
         // Add methods here
         std::string     getType();

@@ -3,13 +3,18 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class Zombie 
 {
     public:
-        Zombie();
-        Zombie(std::string name);
-        ~Zombie();
+        Zombie(); // Constructor
+        Zombie(std::string name);  //  Constructor with name 
+        Zombie(const Zombie& other); // copy Constructor
+        ~Zombie(); // Destructor 
+        Zombie& operator=(const Zombie& other); //  Copy assignment constructor 
+        
+        
         void    announce(void);
         void    setName(std::string name);
 

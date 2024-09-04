@@ -2,7 +2,7 @@
 
 int     main()
 {
-    Fixed   a = 10;
+    Fixed   a;
     Fixed   b(a);
     Fixed   c;
         

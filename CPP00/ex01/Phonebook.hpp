@@ -9,6 +9,9 @@ class Phonebook {
 public: 
 	Phonebook(void);
 	~Phonebook(void);
+	Phonebook(const Phonebook& other);
+	Phonebook& operator=(const Phonebook& other);
+
 	void	add();
 	void	search();
 	void	search_index(std::string str);

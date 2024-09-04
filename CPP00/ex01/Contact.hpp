@@ -14,6 +14,9 @@ class Contact {
 public:
 	Contact(void);
 	~Contact(void);
+	Contact(const Contact& other);               // Copy Constructor
+    Contact& operator=(const Contact& other);    // Copy Assignment Operator
+	
 	void	set_firstname(std::string str);
 	void	set_lastname(std::string str);
 	void	set_nickname(std::string str);

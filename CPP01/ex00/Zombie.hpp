@@ -7,8 +7,12 @@
 class Zombie 
 {
     public:
+
         Zombie(std::string name);
+        Zombie(const Zombie& other);
         ~Zombie();
+        Zombie& operator=(const Zombie& other);
+        
         void    announce(void);
 
     private:

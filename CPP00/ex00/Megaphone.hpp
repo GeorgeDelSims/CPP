@@ -9,6 +9,9 @@ public:
 
 	Megaphone(char *str_input);
 	~Megaphone();
+    Megaphone(const Megaphone& other);               // Copy Constructor
+    Megaphone& operator=(const Megaphone& other);    // Copy Assignment Operator
+
 }
 
 

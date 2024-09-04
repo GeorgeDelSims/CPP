@@ -12,8 +12,10 @@
 class Harl 
 {
     public:
-        Harl();
-        ~Harl();
+        Harl();                                // Default Constructor
+        ~Harl();                               // Destructor
+        Harl(const Harl& other);               // Copy Constructor
+        Harl& operator=(const Harl& other);    // Copy Assignment Operator
 
         // Methods: 
         void                        complain(std::string level);

@@ -8,6 +8,30 @@ Contact::~Contact(void)
 {
 }
 
+// Copy Constructor
+Contact::Contact(const Contact& other)
+{
+    this->_firstname = other._firstname;
+    this->_lastname = other._lastname;
+    this->_nickname = other._nickname;
+    this->_number = other._number;
+    this->_secret = other._secret;
+}
+
+// Copy Assignment Operator
+Contact& Contact::operator=(const Contact& other)
+{
+    if (this != &other) // Check for self-assignment
+    {
+        this->_firstname = other._firstname;
+        this->_lastname = other._lastname;
+        this->_nickname = other._nickname;
+        this->_number = other._number;
+        this->_secret = other._secret;
+    }
+    return (*this);
+}
+
 void	Contact::set_firstname(std::string str)
 {
 	this->_firstname = str;
