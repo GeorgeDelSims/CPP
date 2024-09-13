@@ -1,8 +1,8 @@
 # Name
-NAME = scav_exec
+NAME = diamond_exec
 
 # Sources and objects.
-SRCS = ScavTrap.cpp ClapTrap.cpp main.cpp
+SRCS = ScavTrap.cpp ClapTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

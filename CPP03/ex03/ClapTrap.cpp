@@ -5,13 +5,13 @@
 //Constructor
 ClapTrap::ClapTrap() : _Name(NULL), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "ClapTrap Constructor called" << std::endl;
 }
 
 // Constructor with name as parameter
 ClapTrap::ClapTrap(std::string name) : _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) 
 {
-	std::cout << "Constructor with name as parameter called" << std::endl;
+	std::cout << "ClapTrap Constructor with name as parameter called" << std::endl;
 }
 
 //Copy constructor
