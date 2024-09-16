@@ -10,6 +10,9 @@ int main()
     DiamondTrap    diamsA = DiamondTrap("diamsA");
 
     diamsA.whoAmI();
+    diamsA.getName();
+    diamsA.takeDamage();
+
 
     return (0);
 }

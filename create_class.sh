@@ -24,9 +24,11 @@ class ${CLASS_NAME}
         ~${CLASS_NAME}(); // destructor 
 
         // Methods: 
-
+    protected:
+        // Protected member variables & utils functions:
+        
     private:
-        // Member variables & utils functions:
+        // Private member variables & utils functions:
 };
 
 #endif // ${CLASS_NAME}_HPP

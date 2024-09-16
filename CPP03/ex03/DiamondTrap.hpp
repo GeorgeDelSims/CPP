@@ -3,6 +3,8 @@
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include <iostream>
+#include <string>
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
@@ -16,7 +18,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
         // Methods:
         std::string     getName() const;
-        void whoAmI();
+        void            whoAmI();
 
     private:
         std::string     _Name;

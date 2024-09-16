@@ -5,7 +5,7 @@ echo "Enter the project name:"
 read PROJECT_NAME
 
 # Prompt for the source files
-echo "Enter the source files (space-separated):"
+echo "Enter the source files (space-separated, no .hpp files !!!):"
 read SOURCE_FILES
 
 # Generate the object files list
@@ -21,7 +21,7 @@ SRCS = $SOURCE_FILES
 OBJS = \$(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Compile and create everything.
