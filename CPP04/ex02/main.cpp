@@ -7,7 +7,9 @@ int main()
 {
     int         i = 0;
     AAnimal*    zoo[ANIMALS];
+    // AAnimal     Tier;
 
+    // Tier.makeSound();
     while (i < ANIMALS)
     {
         if (i % 2 == 0)

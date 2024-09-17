@@ -1,16 +1,13 @@
 # Name
-NAME = I_dont_want_to_set_the_world_on_fire
+NAME = Bureaucrat
 
 # Sources and objects.
-SRCS = Brain.cpp main.cpp Dog.cpp Cat.cpp Animal.cpp
+SRCS = Bureaucrat.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-
-#leak check: 
-#valgrind --leak-check=full -v ./your_program
 
 # Compile and create everything.
 all: $(NAME)
