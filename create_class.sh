@@ -20,7 +20,7 @@ class ${CLASS_NAME}
     public:
         ${CLASS_NAME}(); // constructor
         ${CLASS_NAME}(const ${CLASS_NAME}& other); //copy constructor
-        ${CLASS_NAME}&  operator=(${CLASS_NAME}& other); // copy assignment operator
+        ${CLASS_NAME}&  operator=(const ${CLASS_NAME}& other); // copy assignment operator
         ~${CLASS_NAME}(); // destructor 
 
         // Methods: 
@@ -44,7 +44,7 @@ ${CLASS_NAME}::${CLASS_NAME}() {}
 ${CLASS_NAME}::${CLASS_NAME}(const ${CLASS_NAME}& other) {}
 
 //Copy assignment operator
-${CLASS_NAME}&  ${CLASS_NAME}::operator=(${CLASS_NAME}& other) {}
+${CLASS_NAME}&  ${CLASS_NAME}::operator=(const ${CLASS_NAME}& other) {}
 
 //Destructor
 ${CLASS_NAME}::~${CLASS_NAME}() {}

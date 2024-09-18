@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+class AForm;
+
 class Bureaucrat 
 {
     public:
@@ -17,6 +19,7 @@ class Bureaucrat
         const std::string&  getName() const;
         void                incrementGrade();
         void                decrementGrade();
+        void                signForm(AForm& form);
 
         // Protected member variables & utils functions:
         
@@ -42,8 +45,8 @@ class Bureaucrat
     
     private:
         // Private member variables & utils functions:
-        const std::string   _name;
-        int                 _grade;
+        const std::string   _Name;
+        int                 _Grade;
 };
 
 std::ostream&   operator<<(std::ostream& outputStream, const Bureaucrat& bureaucrat);
