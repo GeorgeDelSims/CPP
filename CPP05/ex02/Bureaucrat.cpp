@@ -38,7 +38,7 @@ Bureaucrat&  Bureaucrat::operator=(const Bureaucrat& other)
 Bureaucrat::~Bureaucrat() {}
 
 
-// Methods:
+// Getters:
 int     Bureaucrat::getGrade() const
 {
     return (this->_Grade);
@@ -49,6 +49,7 @@ const std::string&       Bureaucrat::getName() const
     return (this->_Name);
 }
 
+// Methods:
 void    Bureaucrat::incrementGrade()
 {
     if (this->_Grade < 1)
@@ -80,6 +81,17 @@ void    Bureaucrat::signForm(AForm& form)
         std::cout << form.getName() << " has already been signed\n";
 }
 
+void    Bureaucrat::executeForm(AForm& form)
+{
+    try
+    {
+        form.performExecute(*this);
+    }
+    catch (const std::exception &e) 
+    {
+        std::cerr << this->getName() << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
 
 // ostream operator overload:
 std::ostream&   operator<<(std::ostream& os, const Bureaucrat& b)

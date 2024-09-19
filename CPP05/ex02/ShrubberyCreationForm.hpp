@@ -3,12 +3,13 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
-class Form;
+class AForm;
 
 class ShrubberyCreationForm : public AForm
 {
@@ -31,5 +32,7 @@ class ShrubberyCreationForm : public AForm
 
         ShrubberyCreationForm(); // Default Constructor
 };
+
+std::ostream &operator<<(std::ostream &os, ShrubberyCreationForm *shrub);
 
 #endif // ShrubberyCreationForm_HPP

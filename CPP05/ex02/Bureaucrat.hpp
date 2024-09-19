@@ -14,15 +14,17 @@ class Bureaucrat
         Bureaucrat&  operator=(const Bureaucrat& other); // copy assignment operator
         ~Bureaucrat(); // destructor 
 
-        // Methods: 
+        // Getters: 
         int                 getGrade() const;
         const std::string&  getName() const;
+
+        // Methods
         void                incrementGrade();
         void                decrementGrade();
         void                signForm(AForm& form);
+        void                executeForm(AForm& form);
 
         // Protected member variables & utils functions:
-        
         class GradeTooHighException : public std::exception
         {
             public: 

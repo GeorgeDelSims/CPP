@@ -3,12 +3,13 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
-class Form;
+class AForm;
 
 class PresidentialPardonForm : public AForm
 {
@@ -19,15 +20,19 @@ class PresidentialPardonForm : public AForm
         ~PresidentialPardonForm(); // destructor 
 
         // Methods: 
+        std::string     getTarget() const;
+        void            execute(Bureaucrat const &executor) const;
+
     protected:
         // Protected member variables & utils functions:
         
     private:
         // Private member variables & utils functions:
         std::string     _target;
-        
-        PresidentialPardonForm(); 
-        // Default constructor is private because Orthodox Canonical Form but also only one constructor asked for in the consigne
+
+        PresidentialPardonForm(); // Default Constructor
 };
 
-#endif // PresidentialPardonForm_HPP
+std::ostream &operator<<(std::ostream &os, PresidentialPardonForm *pres);
+
+#endif // PRESIDENTIALPARDONFORM_HPP

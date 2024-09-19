@@ -2,7 +2,7 @@
 NAME = Bureaucrat
 
 # Sources and objects.
-SRCS = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyCreationForm.cpp PresidentialPardonForm.cpp
+SRCS = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
@@ -22,6 +22,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
+	@rm -f *\_shrubbery
 	@echo "[INFO] Objects removed."
 
 fclean: clean
