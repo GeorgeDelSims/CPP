@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <climits>
+#include <stdexcept>
 
 typedef enum e_Type 
 {
@@ -15,6 +17,7 @@ typedef enum e_Type
     NANF = 6,
     UNDEFINED = 7
 }               Type;
+
 
 class ScalarConverter 
 {

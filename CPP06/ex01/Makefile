@@ -1,8 +1,8 @@
 # Name
-NAME = convert
+NAME = Serializer
 
 # Sources and objects.
-SRCS = ScalarConverter.cpp main.cpp
+SRCS = Serializer.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

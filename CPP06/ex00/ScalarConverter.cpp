@@ -21,37 +21,69 @@ ScalarConverter::~ScalarConverter() {}
 
 // Methods:
 
+// Static function to check if int input is in range
+static int inputChecks(const std::string str, int type)
+{
+	if (type == INT)
+	{
+		try
+		{
+			int num = std::stoi(str);
+			(void)num;
+		}
+		catch (const std::out_of_range& e)
+		{
+			std::cout << "Invalid input : " << e.what() << std::endl;
+			return (-1);
+		}
+		catch (const std::invalid_argument& e)
+		{
+			std::cout << "Invalid argument error: " << e.what() << std::endl;
+			return (-1);
+		}
+	}
+	return (0);
+}
+
 void	ScalarConverter::convert(const std::string str)
 {
-	// (void)str;
-	int		type = ScalarConverter::getType(str);
-	// if (type == UNDEFINED)
-		
-
+	int				type = ScalarConverter::getType(str);
+	
+	if (inputChecks(str, type) == -1)
+		return ;
 	switch (type)
 	{
 		case CHAR:
-			std::cout << "char : " << str[0] << "\n";
+			std::cout << "char : '" << str[0] << "'\n";
 			std::cout << "int : " << static_cast<int>(str[0]) << "\n";
-			std::cout << "float : " << static_cast<float>(str[0]) << "\n";
-			std::cout << "double : " << static_cast<double>(str[0]) << std::endl;
+			std::cout << "float : " << static_cast<float>(str[0]) << ".0f" << "\n";
+			std::cout << "double : " << static_cast<double>(str[0]) << ".0" << std::endl;
 			break;
 		case INT:
-			std::cout << "char : " << static_cast<char>(std::stoi(str)) << "\n";
+			if (std::stoi(str) < 33 || std::stoi(str) > 127)
+				std::cout << "char : Non displayable\n";
+			else 
+				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
 			std::cout << "int : " << std::stoi(str) << "\n";
-			std::cout << "float : " << static_cast<float>(std::stoi(str)) << "\n";
-			std::cout << "double : " << static_cast<double>(std::stoi(str)) << std::endl;
+			std::cout << "float : " << static_cast<float>(std::stoi(str)) << ".0f" << "\n";
+			std::cout << "double : " << static_cast<double>(std::stoi(str)) << ".0" << std::endl;
 			break;
 		case DOUBLE:
-			std::cout << "char : " << std::stod(str) << "\n";
+			if (std::stoi(str) < 33 || std::stoi(str) > 127)
+				std::cout << "char : Non displayable\n";
+			else
+				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
 			std::cout << "int : " << static_cast<int>(std::stod(str)) << "\n";
-			std::cout << "float : " << std::stof(str) << "\n";
+			std::cout << "float : " << std::stof(str) << "f" << "\n";
 			std::cout << "double : " << static_cast<double>(std::stod(str)) << std::endl;
 			break;
 		case FLOAT:
-			std::cout << "char : " << static_cast<char>(std::stof(str)) << "\n";
+			if (std::stoi(str) < 33 || std::stoi(str) > 127)
+				std::cout << "char : Non displayable\n";
+			else
+				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
 			std::cout << "int : " << static_cast<int>(std::stof(str)) << "\n";
-			std::cout << "float : " << std::stof(str) << "\n";
+			std::cout << "float : " << std::stof(str) << "f" << "\n";
 			std::cout << "double : " << static_cast<double>(std::stof(str)) << std::endl;
 			break;
 		case POSITIVE_INF:
@@ -73,15 +105,13 @@ void	ScalarConverter::convert(const std::string str)
 			std::cout << "double : nan" << std::endl;
 			break;
 		case UNDEFINED:
-			std::cout << "UNDEFINED" << std::endl;
-		// 	std::cout << "char : " << str << "\n";
-		// 	std::cout << "int : " << str << "\n";
-		// 	std::cout << "float : " << str << "\n";
-		// 	std::cout << "double : " << str << std::endl;
+			std::cout << "char : impossible" << "\n";
+			std::cout << "int : impossible" << "\n";
+			std::cout << "float : impossible" << "\n";
+			std::cout << "double : impossible" << std::endl;
 			break;
 	}
 }
-
 
 int	ScalarConverter::getType(const std::string str)
 {
