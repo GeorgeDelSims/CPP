@@ -41,10 +41,9 @@ class C : public Base
         ~C();
 };
 
-
 // Functions: 
 Base        *generate(void);
-void        identify(Base* p);
-void        identify(Base& p);
+void        identify(Base* ptr);
+void        identify(Base& ref);
 
 #endif // Base_HPP
