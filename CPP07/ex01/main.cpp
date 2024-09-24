@@ -1,16 +1,5 @@
 #include "iter.hpp"
 
-template<typename T>
-void	print(const T&	element)
-{
-	std::cout << element << std::endl;
-}
-
-template<typename T>
-void	increment(T& element)
-{
-	++element;
-}
 
 int main()
 {

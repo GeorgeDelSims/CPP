@@ -13,4 +13,17 @@ void	iter(T	*array, std::size_t length, F	func)
 	}
 }
 
+template<typename T>
+void	print(const T&	element)
+{
+	std::cout << element << std::endl;
+}
+
+template<typename T>
+void	increment(T& element)
+{
+	++element;
+}
+
+
 #endif

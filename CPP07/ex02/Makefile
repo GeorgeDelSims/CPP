@@ -2,7 +2,7 @@
 NAME = Array
 
 # Sources and objects.
-SRCS = Array.cpp main.cpp
+SRCS =  main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
