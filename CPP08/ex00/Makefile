@@ -1,8 +1,8 @@
 # Name
-NAME = Zombie
+NAME = easyfind
 
 # Sources and objects.
-SRCS = Zombie.cpp main.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

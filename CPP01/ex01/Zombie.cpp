@@ -15,17 +15,13 @@ Zombie::Zombie(void)
 }
 
 // Copy Constructor
-Zombie::Zombie(const Zombie& other)
-{
-    this->_name = other._name;
-}
+Zombie::Zombie(const Zombie& other) : _name(other._name) {}
 
 // Destructor 
 Zombie::~Zombie() 
 {
     std::cout << "Zombie object " << this->_name << " destroyed" << std::endl;
 }
-
 
 // Copy Assignment Operator
 Zombie& Zombie::operator=(const Zombie& other)
@@ -37,7 +33,7 @@ Zombie& Zombie::operator=(const Zombie& other)
     return (*this);
 }
 
-// Add methods implementation here
+// methods implementation:
 void    Zombie::announce(void)
 {
     std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
@@ -47,4 +43,19 @@ void    Zombie::setName(std::string name)
 {
     this->_name = name;
     std::cout << "name set for " << this->_name << std::endl;
+}
+
+void	randomChump(std::string name)
+{
+	Zombie z = Zombie(name);
+	z.announce();
+}
+
+Zombie  *zombieHorde(int N, std::string name)
+{
+	Zombie	*horde = new Zombie[N];
+
+	for (int i = 0; i < N; i++)
+		horde[i].setName(name);
+	return (horde);
 }

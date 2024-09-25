@@ -3,6 +3,7 @@
 	Pointer : points to a memory address containing a value (a pointer is just a memory address)
 	Reference : is a copy (within the scope of the function) of a value. Cannot be NULL, cannot be changed 
 */
+
 int	main()
 {
 	std::string		str = "HI THIS IS BRAIN";

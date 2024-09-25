@@ -43,9 +43,6 @@ class Fixed
         int     toInt(void) const;
         float   toFloat(void) const;
 
-        friend std::ostream&   operator<<(std::ostream& outputStream, const Fixed& fixedPoint);
-        // friend function can access private members from outside the class
-    
     private:
         
         // member variables
@@ -54,5 +51,7 @@ class Fixed
         // member functions
         
 };
+
+std::ostream&   operator<<(std::ostream& outputStream, const Fixed& fixedPoint);
 
 #endif

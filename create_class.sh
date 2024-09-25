@@ -15,6 +15,9 @@ cat <<EOL > ${HEADER_FILE}
 #ifndef ${CLASS_NAME_UPPER}_HPP
 # define ${CLASS_NAME_UPPER}_HPP
 
+#include <string>
+#include <iostream>
+
 class ${CLASS_NAME} 
 {
     public:

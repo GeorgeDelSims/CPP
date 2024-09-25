@@ -31,7 +31,7 @@ void    FileReplacer::replace()
     std::string     line;
 
     if (!inputFile)
-        throw std::runtime_error("Error opening input file");
+        throw std::runtime_error("Error opening input file"); // runtime error accepts std::string as an argument 
     if (!outputFile)
         throw std::runtime_error("Error opening output file");
     while (std::getline(inputFile, line))

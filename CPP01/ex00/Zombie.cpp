@@ -8,10 +8,7 @@ Zombie::Zombie(std::string name)
 }
 
 // Copy Constructor
-Zombie::Zombie(const Zombie& other)
-{
-    this->_name = other._name;
-}
+Zombie::Zombie(const Zombie& other) : _name(other._name) {}
 
 // Destructor 
 Zombie::~Zombie() 
@@ -29,9 +26,19 @@ Zombie& Zombie::operator=(const Zombie& other)
     return (*this);
 }
 
-
 // Add methods implementation here
 void    Zombie::announce(void)
 {
     std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void	randomChump(std::string name)
+{
+	Zombie z = Zombie(name);
+	z.announce();
+}
+
+Zombie	*newZombie(std::string name)
+{
+	return (new Zombie(name));
 }

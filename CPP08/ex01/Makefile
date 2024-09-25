@@ -1,8 +1,8 @@
 # Name
-NAME = My_Awesome_Phonebook
+NAME = Span
 
 # Sources and objects.
-SRCS = phonebook.cpp contact.cpp main.cpp add.cpp search.cpp
+SRCS = Span.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.
@@ -28,6 +28,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "[INFO] $(NAME) removed."
 
-re:     fclean all
+re: fclean all
 
-.PHONY: all clean fclean format re
+.PHONY: all clean fclean re

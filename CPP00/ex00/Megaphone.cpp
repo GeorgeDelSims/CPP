@@ -2,10 +2,10 @@
 #include <string>
 #include <cctype>
 
-unsigned char to_upper(unsigned char c) 
-{
-    return std::toupper(c);
-}
+// unsigned char to_upper(unsigned char c) 
+// {
+//     return std::toupper(c);
+// }
 
 int	main (int ac, char *av[])
 {

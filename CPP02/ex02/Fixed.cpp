@@ -150,7 +150,7 @@ Fixed   Fixed::operator/(const Fixed& other) const
     return (result);
 }
 
-// Friend function for output stream operator overload
+// function for output stream operator overload
 std::ostream&   operator<<(std::ostream& outputStream, const Fixed& fixedPoint)
 {
     outputStream << fixedPoint.toFloat();
