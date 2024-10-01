@@ -6,7 +6,7 @@ ScalarConverter::ScalarConverter() {}
 //Copy constructor
 ScalarConverter::ScalarConverter(const ScalarConverter& other) 
 {
-	(void)other;
+	*this = other;
 }
 
 //Copy assignment operator
@@ -19,97 +19,106 @@ ScalarConverter&  ScalarConverter::operator=(const ScalarConverter& other)
 //Destructor
 ScalarConverter::~ScalarConverter() {}
 
+
 // Methods:
 
-// Static function to check if int input is in range
-static int inputChecks(const std::string str, int type)
+char	ScalarConverter::ConvertToChar(double d)
 {
-	if (type == INT)
-	{
-		try
-		{
-			int num = std::stoi(str);
-			(void)num;
-		}
-		catch (const std::out_of_range& e)
-		{
-			std::cout << "Invalid input : " << e.what() << std::endl;
-			return (-1);
-		}
-		catch (const std::invalid_argument& e)
-		{
-			std::cout << "Invalid argument error: " << e.what() << std::endl;
-			return (-1);
-		}
-	}
-	return (0);
+	if (isnan(d))
+		throw (ScalarConverter::impossible());
+	if (d < 32.0 || d > 127.0)
+		throw (ScalarConverter::NonDisplayable());
+	return (static_cast<char>(d));
+}
+
+int		ScalarConverter::ConvertToInt(double d)
+{
+	if (isnan(d) || isinf(d))
+		throw (ScalarConverter::impossible());
+	if (d > static_cast<double>(INT_MAX) || d < static_cast<double>(INT_MIN))
+		throw (ScalarConverter::impossible());
+	return (static_cast<int>(d));
+}
+
+float	ScalarConverter::ConvertToFloat(double d)
+{
+	if (d > FLT_MAX || d < -FLT_MAX)
+		throw (ScalarConverter::impossible());
+	return (static_cast<float>(d));
+}
+
+double	ScalarConverter::ConvertToDouble(double d)
+{
+	return (static_cast<double>(d));
 }
 
 void	ScalarConverter::convert(const std::string str)
 {
-	int				type = ScalarConverter::getType(str);
-	
-	if (inputChecks(str, type) == -1)
-		return ;
-	switch (type)
+	double		value = std::atof(str.c_str());
+	bool		hasDecimal = true;
+	char		_char;
+
+	if (std::floor(value) == value)
+		hasDecimal = false;	
+
+	std::cout << "string : " << str << std::endl;
+	if (getType(str) == UNDEFINED) 
 	{
-		case CHAR:
-			std::cout << "char : '" << str[0] << "'\n";
-			std::cout << "int : " << static_cast<int>(str[0]) << "\n";
-			std::cout << "float : " << static_cast<float>(str[0]) << ".0f" << "\n";
-			std::cout << "double : " << static_cast<double>(str[0]) << ".0" << std::endl;
-			break;
-		case INT:
-			if (std::stoi(str) < 33 || std::stoi(str) > 127)
-				std::cout << "char : Non displayable\n";
-			else 
-				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
-			std::cout << "int : " << std::stoi(str) << "\n";
-			std::cout << "float : " << static_cast<float>(std::stoi(str)) << ".0f" << "\n";
-			std::cout << "double : " << static_cast<double>(std::stoi(str)) << ".0" << std::endl;
-			break;
-		case DOUBLE:
-			if (std::stoi(str) < 33 || std::stoi(str) > 127)
-				std::cout << "char : Non displayable\n";
-			else
-				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
-			std::cout << "int : " << static_cast<int>(std::stod(str)) << "\n";
-			std::cout << "float : " << std::stof(str) << "f" << "\n";
-			std::cout << "double : " << static_cast<double>(std::stod(str)) << std::endl;
-			break;
-		case FLOAT:
-			if (std::stoi(str) < 33 || std::stoi(str) > 127)
-				std::cout << "char : Non displayable\n";
-			else
-				std::cout << "char : '" << static_cast<char>(std::stoi(str)) << "'\n";
-			std::cout << "int : " << static_cast<int>(std::stof(str)) << "\n";
-			std::cout << "float : " << std::stof(str) << "f" << "\n";
-			std::cout << "double : " << static_cast<double>(std::stof(str)) << std::endl;
-			break;
-		case POSITIVE_INF:
-			std::cout << "char : impossible" << "\n";
-			std::cout << "int : impossible" << "\n";
-			std::cout << "float : +inff" << "\n";
-			std::cout << "double : +inf" << std::endl;
-			break;
-		case NEGATIVE_INF:
-			std::cout << "char : impossible" << "\n";
-			std::cout << "int : impossible" << "\n";
-			std::cout << "float : -inff" << "\n";
-			std::cout << "double : -inf" << std::endl;
-			break;
-		case NANF:
-			std::cout << "char : impossible" << "\n";
-			std::cout << "int : impossible" << "\n";
-			std::cout << "float : nanf" << "\n";
-			std::cout << "double : nan" << std::endl;
-			break;
-		case UNDEFINED:
-			std::cout << "char : impossible" << "\n";
-			std::cout << "int : impossible" << "\n";
-			std::cout << "float : impossible" << "\n";
-			std::cout << "double : impossible" << std::endl;
-			break;
+		std::cout << "char : Non displayable\nint : impossible\nfloat : impossible\ndouble : impossible" << std::endl;
+		return ;
+	}
+	else if (getType(str) == POSITIVE_INF)
+	{
+		std::cout << "char : Non displayable\nint : impossible\nfloat : +inff\ndouble : +inff" << std::endl;
+		return ;
+	}
+	else if (getType(str) == NEGATIVE_INF)
+	{
+		std::cout << "char : Non displayable\nint : impossible\nfloat : -inff\ndouble : -inff" << std::endl;
+		return ;
+	}
+	try // CHAR
+	{
+		std::cout << "char : ";
+		_char = ConvertToChar(value);
+		std::cout << "'" << _char << "'" << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try // INT
+	{
+		std::cout << "int : ";
+		std::cout << ConvertToInt(value) << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try // FLOAT 
+	{
+		std::cout << "float : ";
+		std::cout << ConvertToFloat(value);
+		if (hasDecimal == false)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try // DOUBLE
+	{
+		std::cout << "double : ";
+		std::cout << ConvertToDouble(value);
+		if (hasDecimal == false)
+			std::cout << ".0";
+		std::cout << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 }
 
@@ -134,18 +143,21 @@ int	ScalarConverter::getType(const std::string str)
 		else if (str[i] == '.')
 			dot++;
 		else
-			isChar = 1;
+			isChar += 1;
 		i++;
 	}
-	if (dot == 1 && str.back() != 'f')
+	if  (isChar)
+	{
+		if (str.length() == 1 && std::isprint(static_cast<unsigned char>(str[0])))
+			return (CHAR);
+		else if (dot == 1 && isChar == 1 && str[str.length() - 1] == 'f')
+			return (FLOAT);
+		else
+			return (UNDEFINED);
+	}
+	if (dot == 1 && str[str.length() - 1] != 'f')
 		return (DOUBLE);
-	else if (dot == 1 && str.back() == 'f')
-		return (FLOAT);
 	else if (!isChar && !dot)
 		return (INT);
-	else if (isChar && !dot && str.length() == 1)
-		return (CHAR);
 	return (UNDEFINED);
 }
-
-

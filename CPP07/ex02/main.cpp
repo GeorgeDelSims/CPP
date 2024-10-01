@@ -33,7 +33,7 @@ int main()
         for (unsigned int i = 0; i < 5; ++i)
             std::cout << intArray[i] << std::endl;
 
-        std::cout << "trying to access out of bounds access.\n";
+        std::cout << "trying to access out of bounds index:\n";
         
         for (unsigned int i = 0; i < 8; ++i)
             std::cout << stringArray[i] << std::endl;

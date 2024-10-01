@@ -15,7 +15,7 @@ int main()
     catch (const Bureaucrat::GradeTooLowException& e)
     {
         std::cerr << e.what() << std::endl;
-    }    
+    }
 
     try
     {

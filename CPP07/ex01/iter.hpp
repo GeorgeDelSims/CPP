@@ -25,5 +25,4 @@ void	increment(T& element)
 	++element;
 }
 
-
 #endif

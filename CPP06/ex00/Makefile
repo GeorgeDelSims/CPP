@@ -2,7 +2,7 @@
 NAME = convert
 
 # Sources and objects.
-SRCS = ScalarConverter.cpp main.cpp
+SRCS = ScalarConverter.cpp main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

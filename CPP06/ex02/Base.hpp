@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>   // For rand() and srand()
 #include <ctime>     // For time()
+#include <typeinfo>
 
 class Base 
 {

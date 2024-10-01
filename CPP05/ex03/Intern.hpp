@@ -24,11 +24,6 @@ class Intern
         // Methods: 
         AForm*  makeForm(const std::string form_name, const std::string target);
 
-    protected:
-        // Protected member variables & utils functions:
-        
-    private:
-        // Private member variables & utils functions:
         class WrongInputException : std::exception
         {
             public:
@@ -37,6 +32,9 @@ class Intern
                     return ("Incorrect form name\n");
                 }
         };
+        
+    protected:
+    private:
 };
 
 #endif // Intern_HPP
