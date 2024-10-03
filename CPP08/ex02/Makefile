@@ -2,7 +2,7 @@
 NAME = MutantStack
 
 # Sources and objects.
-SRCS = MutantStack.tpp main.cpp
+SRCS =  main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define all the compiling flags.

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 
+
 /*
 MutantStack inherits from std::stack 
 by default, std::stack uses std::deque as its underlying container
@@ -30,6 +31,10 @@ class MutantStack : public std::stack<T>
         iterator        end();
         const_iterator  begin() const;
         const_iterator  end() const;
+        iterator        rbegin();
+        iterator        rend();
+        const_iterator  rbegin() const;
+        const_iterator  rend() const;
 
 
     protected:
@@ -41,5 +46,7 @@ class MutantStack : public std::stack<T>
     private:
         // Private member variables & utils functions:
 };
+
+#include "MutantStack.tpp"
 
 #endif // MutantStack_HPP

@@ -61,25 +61,25 @@ typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 }
 
 template<typename T>
-typename MutantStack<T>::rev_iterator    MutantStack<T>::rbegin()
+typename MutantStack<T>::iterator    MutantStack<T>::rbegin()
 {
     return (std::stack<T>::c.rbegin());
 }
 
 template<typename T>
-typename MutantStack<T>::rev_iterator    MutantStack<T>::rend()
+typename MutantStack<T>::iterator    MutantStack<T>::rend()
 {
     return (std::stack<T>::c.rend());
 }
 
 template<typename T>
-typename MutantStack<T>::rev_const_iterator  MutantStack<T>::rbegin() const
+typename MutantStack<T>::const_iterator  MutantStack<T>::rbegin() const
 {
     return (std::stack<T>::c.rbegin());
 }
 
 template<typename T>
-typename MutantStack<T>::rev_const_iterator MutantStack<T>::rend() const
+typename MutantStack<T>::const_iterator MutantStack<T>::rend() const
 {
     return (std::stack<T>::rend());
 }
