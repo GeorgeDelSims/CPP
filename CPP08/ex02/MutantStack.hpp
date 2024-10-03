@@ -19,9 +19,11 @@ class MutantStack : public std::stack<T>
         MutantStack(const MutantStack& other); //copy constructor
         MutantStack&  operator=(const MutantStack<T>& other); // copy assignment operator
 
-        typedef typename std::strack<T>::container_type under_ctr;
+        typedef typename std::stack<T>::container_type  under_ctr;
         typedef typename under_ctr::iterator            iterator;
         typedef typename under_ctr::const_iterator      const_iterator;
+        typedef typename under_ctr::iterator            rev_iterator;
+        typedef typename under_ctr::const_iterator      rev_const_iterator;
 
         // Methods: 
         iterator        begin();
