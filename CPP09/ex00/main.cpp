@@ -21,6 +21,8 @@ int main(int ac, char *av[])
     std::string     line;
 
     fs.open(filename.c_str());
+    std::getline(fs, line);
+    // std::cout << "first getline : " << line << std::endl;
     while (std::getline(fs, line)) 
     {
         std::istringstream  ss(line); 
@@ -38,19 +40,19 @@ int main(int ac, char *av[])
             }
             catch (std::exception& e)
             {
-                std::cout << "Error: " << e.what() << std::endl;
+                std::cout << "Error: " << e.what() << date << std::endl;
             }
             try
             {
                 if (ss >> rate) 
                 {
                     btc.checkValidValue(rate);
-    
-                    std::map<std::string, float>::iterator  it = btc.map.find(date);
+                    // std::cout << "Value of rate : " << rate << std::endl;
+                    std::map<std::string, float>::iterator  it = btc.map.lower_bound(date);
                     if (it != btc.map.end())
                     {
                         result = it->second * rate;
-                        std::cout << rate << " = " << result << std::endl;
+                        std::cout << rate <<" = " << result << std::endl;
                     }
                     else
                     {

@@ -28,16 +28,25 @@ class BitcoinExchange
             public:
                 virtual const char* what() const throw()
                 {
-                    return ("Invalid date format");
+                    return ("Invalid date format: ");
                 }
         };
 
-        class invalidValue : public std::exception
+        class ValueTooLarge : public std::exception
         {
             public: 
                 virtual const char* what() const throw()
                 {
-                    return ("Invalid value, should be between 0 and 1000.");
+                    return ("Too large a number.");
+                }
+        };
+
+        class NegativeValue : public std::exception
+        {
+            public: 
+                virtual const char* what() const throw()
+                {
+                    return ("Not a positive number.");
                 }
         };
 

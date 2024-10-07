@@ -58,26 +58,43 @@ void    BitcoinExchange::checkValidDate(std::string &date)
 {
     date = trim(date);
     if (date.length() != 10)
-            throw (BitcoinExchange::invalidDate());
+    {    
+        std::cerr << "length is not equal to 10" << std::endl;
+        throw (BitcoinExchange::invalidDate());    
+    }
     for (int i = 0; i < 10; ++i)
     {
         if (i == 4 || i == 7)
         {
             if (date[i] != '-')
+            {
+                std::cerr << "didn't  find '-'" << std::endl;
                 throw (BitcoinExchange::invalidDate());
+            }
         }
         else
         {
             if (!std::isdigit(date[i]))
+            {
+                std::cerr << "isdigit" << std::endl;
                 throw (BitcoinExchange::invalidDate());
+            }
         }
     }
+    if (date.substr(0, 3) < "2009" || date.substr(0, 3) > "2022" )
+        throw (BitcoinExchange::invalidDate());
+    if (date.substr(5, 6) > "31" || date.substr(5, 6) < "00")
+        throw (BitcoinExchange::invalidDate());
+    if (date.substr(8, 9) > "12" || date.substr(8, 9) < "00")
+        throw (BitcoinExchange::invalidDate());
 }
 
 void    BitcoinExchange::checkValidValue(float price)
 {
-    if (price < 0.0 || price > 1000.0)
-        throw (BitcoinExchange::invalidValue());
+    if (price < 0.0)
+        throw (BitcoinExchange::NegativeValue());
+    if (price > 1000.0)
+        throw (BitcoinExchange::ValueTooLarge());
 }
 
 // Function to trim leading and trailing whitespace
