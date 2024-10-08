@@ -19,14 +19,13 @@ class PmergeMe
         void    add_number(const char *num);
         void    printVects();
         void    mergeSort();
-
-    protected:
-        // Protected member variables & utils functions:
         
     private:
         // Private member variables & utils functions:
-        std::vector<int>    _vect;
-        std::vector<int>    _sorted_vect;
+        std::vector<int>                _vect;
+        std::vector<int>                _sorted_vect;
+        std::vector<std::list<int> >    _listsVect;
+        int                             _leftover;
 };
 
 #endif // PmergeMe_HPP

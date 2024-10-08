@@ -26,7 +26,7 @@ void    PmergeMe::add_number(const char *num)
 {
     int     number = atoi(num);
 
-    this->_vect.insert(this->_vect.end(), number);
+    _vect.insert(_vect.end(), number);
 }
 
 void    PmergeMe::printVects()
@@ -34,19 +34,42 @@ void    PmergeMe::printVects()
     std::vector<int>::iterator  it;
 
     std::cout << "Before : ";
-    for (it = this->_vect.begin(); it != this->_vect.end(); it++)
+    for (it = _vect.begin(); it != _vect.end(); it++)
         std::cout << *it << " ";
     std::cout << std::endl;
     std::cout << "After : ";
-    for (it = this->_sorted_vect.begin(); it != this->_sorted_vect.end(); it++)
+    for (it = _sorted_vect.begin(); it != _sorted_vect.end(); it++)
         std::cout << *it << " ";
+
+    std::cout << "lists: " << std::endl;
+    for (std::vector<std::list<int> >::iterator it = _listsVect.begin(); it != _listsVect.end(); it++)
+    {
+        std::list<int>::iterator    listIt = it->begin();
+        std::cout << "[ " << *(listIt) << " ";
+        std::advance(listIt, 1);
+    
+        std::cout << *(listIt) << "]" << std::endl;
+    }
 }
 
 void    PmergeMe::mergeSort()
 {
     std::cout << "\nCalled mergeSort function" << std::endl;
     
-
+    for (std::vector<int>::iterator it = _vect.begin(); it != _vect.end(); it++)
+    {
+        if (std::distance(it, _vect.end()) > 1)
+        {
+            std::list<int>  lst;
+            
+            lst.push_back(*it);
+            lst.push_back(*(it + 1));
+            _listsVect.insert(_listsVect.end(), lst); // store the lists of 2 into a vect
+            ++it;
+        }
+        if (_vect.size() % 2 != 0)
+            _leftover = *(_vect.end() - 1);
+    }
 }
 
 

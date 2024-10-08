@@ -10,8 +10,8 @@ int main(int ac, char *av[])
     PmergeMe    pmm = PmergeMe();
     for (int i = 0; i < ac; i++)
         pmm.add_number(av[i]);
-    pmm.printVects();
     pmm.mergeSort();
+    pmm.printVects();
 
     return (0);
 }
