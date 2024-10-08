@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <cstdlib>
+
 
 class RPN 
 {
@@ -14,15 +16,25 @@ class RPN
         ~RPN(); // destructor 
 
         // Methods: 
-        bool    is_operator(char c);
+        bool    is_operator(const char c);
+        int     calculate(int a, int b, const char op);
+        int     algoRPN();
 
-    protected:
-        // Protected member variables & utils functions:
+        // Exceptions: 
+        class BadInput : public std::exception
+        {
+            public:
+                const char *what() const throw()
+                {
+                    return ("Error: Input must be valid reverse polish notation");
+                }
+        };
+
         
     private:
         // Private member variables & utils functions:
-        std::string         rpnString;
-        std::stack<char>    rpnStack;
+        std::string         str;
+        std::stack<int>     stk;
 };
 
 #endif // RPN_HPP

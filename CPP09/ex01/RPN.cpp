@@ -2,32 +2,26 @@
 
 
 //Constructor
-RPN::RPN(const std::string& inputString) : rpnString(inputString)
+RPN::RPN(const std::string& inputString) : str(inputString)
 {
-    try
+
+    for (std::size_t i = 0; i < str.length(); i++)
     {
-        for (std::size_t i = 0; i < rpnString.length(); i++)
-        {
-            if (std::isdigit(rpnString[i]) || this->is_operator(rpnString[i]))
-                rpnStack.push(rpnString[i]);
-        }
-    }
-    catch (std::exception& e)
-    {
-        std::cout << "Error: Bad input" << e.what() << std::endl;
+        if (!(std::isdigit(str[i])) && !(this->is_operator(str[i])))
+            throw (RPN::BadInput());
     }
 }
 
 //Copy constructor
-RPN::RPN(const RPN& other) : rpnString(other.rpnString), rpnStack(other.rpnStack) {}
+RPN::RPN(const RPN& other) : str(other.str), stk(other.stk) {}
 
 //Copy assignment operator
 RPN&  RPN::operator=(const RPN& other) 
 {
     if (this != &other)
     {
-        this->rpnStack = other.rpnStack;
-        this->rpnString = other.rpnString;
+        this->stk = other.stk;
+        this->str = other.str;
     }
     return (*this);
 }
@@ -37,25 +31,49 @@ RPN::~RPN() {}
 
 // Methods:
 
-bool    RPN::is_operator(char c)
+bool    RPN::is_operator(const char c)
 {
     return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
-int     RPN::calculate()
+int     RPN::calculate(int a, int b, const char op)
 {
-    char    c;
-    char    temp_op;
+    if (op == '+')
+        return (b + a);
+    else if (op == '-')
+        return (b - a);
+    else if (op == '*')
+        return (b * a);
+    else if (op == '/')
+        return (b / a);
+    else
+        throw (RPN::BadInput());
+}   
 
-    for (std::size_t i = 0; i < this->rpnString.length(); ++i)
+int     RPN::algoRPN()
+{
+    int    a;
+    int    b;
+
+    for (std::size_t i = 0; i < this->str.length(); ++i)
     {
-        c = this->rpnStack.pop();
-        if (this->is_operator(c)) // if first element is operator
-        {
-            while (this->is_operator(this->rpnStack.top())) // while next element is operator
-            {
 
-            }
+        if (std::isdigit(this->str[i]))
+        {
+            stk.push(this->str[i] - '0');
+        }
+        else if (RPN::is_operator(this->str[i]))
+        {
+            if (stk.size() < 2)
+                throw (RPN::BadInput());
+            a = stk.top();
+            stk.pop();
+            b = stk.top();
+            stk.pop();
+            stk.push(this->calculate(a, b, this->str[i]));
         }
     }
+    if (stk.size() != 1)
+        throw (RPN::BadInput());
+    return (this->stk.top());
 }
