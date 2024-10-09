@@ -9,9 +9,11 @@ int main(int ac, char *av[])
     }
     PmergeMe    pmm = PmergeMe();
     for (int i = 0; i < ac; i++)
+    {
         pmm.add_number(av[i]);
-    pmm.mergeSort();
-    pmm.printVects();
-
+        pmm.Deque_add_number(av[i]);
+    }
+    pmm.sortElementsVect();
+    pmm.sortElementsDeque();
     return (0);
 }
