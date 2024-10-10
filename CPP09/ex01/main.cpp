@@ -10,6 +10,11 @@ int main(int ac, char *av[])
     
     RPN     rpn = RPN(av[1]);
 
+    if (!rpn.inputCheck(av[1]))
+    {
+        std::cout << "Error: input must contain only digits and operators ( + - / * )" << std::endl;
+        return (0);
+    }
     try
     {
         int result = rpn.algoRPN();

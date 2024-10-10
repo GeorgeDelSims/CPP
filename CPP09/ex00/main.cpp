@@ -13,16 +13,12 @@ int main(int ac, char *av[])
 
     btc.readCSV(csv);
     
-    // for (std::map<std::string, float>::iterator  it = btc.map.begin(); it != btc.map.end(); ++it)
-        // std::cout << it->first << " : " << it->second << std::endl;
-
     std::string     filename = av[1];
     std::ifstream   fs;
     std::string     line;
 
     fs.open(filename.c_str());
     std::getline(fs, line);
-    // std::cout << "first getline : " << line << std::endl;
     while (std::getline(fs, line)) 
     {
         std::istringstream  ss(line); 
@@ -41,13 +37,13 @@ int main(int ac, char *av[])
             catch (std::exception& e)
             {
                 std::cout << "Error: " << e.what() << date << std::endl;
+                continue; 
             }
             try
             {
                 if (ss >> rate) 
                 {
                     btc.checkValidValue(rate);
-                    // std::cout << "Value of rate : " << rate << std::endl;
                     std::map<std::string, float>::iterator  it = btc.map.lower_bound(date);
                     if (it != btc.map.end())
                     {

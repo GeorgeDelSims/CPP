@@ -8,7 +8,7 @@ int main(int ac, char *av[])
         return (0);
     }
     PmergeMe    pmm = PmergeMe();
-    for (int i = 0; i < ac; i++)
+    for (int i = 1; i < ac; i++)
     {
         pmm.add_number(av[i]);
         pmm.Deque_add_number(av[i]);

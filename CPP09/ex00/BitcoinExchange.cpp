@@ -31,7 +31,7 @@ void    BitcoinExchange::readCSV(std::string& csv_filename)
         std::cerr << "Could not open file : " << csvFile << std::endl;
         return ;
     }
-
+    std::getline(csvFile, line);
     while (std::getline(csvFile, line))
     {
         // turn each line into a string stream to make it easier to parse
@@ -57,11 +57,8 @@ void    BitcoinExchange::readCSV(std::string& csv_filename)
 void    BitcoinExchange::checkValidDate(std::string &date)
 {
     date = trim(date);
-    if (date.length() != 10)
-    {    
-        std::cerr << "length is not equal to 10" << std::endl;
-        throw (BitcoinExchange::invalidDate());    
-    }
+    if (date.length() < 10 || date.length() > 11)
+        throw (BitcoinExchange::invalidDate());
     for (int i = 0; i < 10; ++i)
     {
         if (i == 4 || i == 7)
@@ -81,11 +78,11 @@ void    BitcoinExchange::checkValidDate(std::string &date)
             }
         }
     }
-    if (date.substr(0, 3) < "2009" || date.substr(0, 3) > "2022" )
+    if (date.substr(0, 3) <= "2008" || date.substr(0, 3) > "2024" )
         throw (BitcoinExchange::invalidDate());
-    if (date.substr(5, 6) > "31" || date.substr(5, 6) < "00")
+    if (date.substr(5, 6) >= "13" || date.substr(5, 6) < "00")
         throw (BitcoinExchange::invalidDate());
-    if (date.substr(8, 9) > "12" || date.substr(8, 9) < "00")
+    if (date.substr(8, 9) > "31" || date.substr(8, 9) < "00")
         throw (BitcoinExchange::invalidDate());
 }
 

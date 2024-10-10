@@ -19,6 +19,8 @@ class RPN
         bool    is_operator(const char c);
         int     calculate(int a, int b, const char op);
         int     algoRPN();
+        bool    inputCheck(const std::string& str);
+
 
         // Exceptions: 
         class BadInput : public std::exception

@@ -5,11 +5,11 @@
 RPN::RPN(const std::string& inputString) : str(inputString)
 {
 
-    for (std::size_t i = 0; i < str.length(); i++)
-    {
-        if (!(std::isdigit(str[i])) && !(this->is_operator(str[i])))
-            throw (RPN::BadInput());
-    }
+    // for (std::size_t i = 0; i < str.length(); i++)
+    // {
+    //     if (!(std::isdigit(str[i])) && !(this->is_operator(str[i])))
+    //         throw (RPN::BadInput());
+    // }
 }
 
 //Copy constructor
@@ -30,6 +30,16 @@ RPN&  RPN::operator=(const RPN& other)
 RPN::~RPN() {}
 
 // Methods:
+
+bool    RPN::inputCheck(const std::string& str)
+{
+    for (std::size_t i = 0; i < str.size(); i++)
+    {
+        if (!is_operator(str[i]) && !std::isdigit(str[i]))
+            return (false);
+    }
+    return (true);
+}
 
 bool    RPN::is_operator(const char c)
 {
